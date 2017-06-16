@@ -218,10 +218,16 @@ public class Game {
 	{
 		playerPanel.validate();//Refreshes the panel
 		playerPanel.repaint();//Tells program that panel needs refreshing
+		playerPanel.setVisible(true);
+		hpPanel.setVisible(true);
+		weaponPanel.setVisible(true);
 		choice2.setVisible(false);//Sets the buttons to invisible
 		choice3.setVisible(false);//Sets the buttons to invisible
 		choice4.setVisible(false);//Sets the buttons to invisible
 		position = "mainScreen";//Indication of which method is currently running
+		image = new ImageIcon(".//res//dforest.jpg");
+		imageLabel.setIcon(image);
+		mainTextArea.setForeground(Color.white);//Colour of text in area
 		mainTextArea.setText("You are on a truck going to your best friend, Marty B’s,"
 				+ "house  when you look out your driver's window to see something weird. "
 				+ "You stop your truck to go out and see what it is and you notice that it is a humanoid figure in the woods."
@@ -382,7 +388,9 @@ public class Game {
 					mainTextArea.setText("You grab your weapon and go into fight the zombie that killed your friend. "
 							+ "You see the zombie in the living room but you notice that it is not just any zombie it is a ZOMBIE BEAR. "
 							+ "You go to attack it");//Display text on button
-					choice1.setText("ATTACK!!");//Display text on button
+					weapon = "Sword";//Set player's new weapon
+					weaponLabelName.setText(weapon);//Display weapon text on label
+					choice1.setText("ATTACK!!!");//Display text on button
 					choice2.setText("");//Display text on button
 					choice3.setText("");//Display text on button
 					choice4.setText("");//Display text on button 
@@ -398,7 +406,9 @@ public class Game {
 					mainTextArea.setText("You grab your health and go into fight the zombie that killed your friend."
 							+ " You see the zombie in the living room but you notice that it is not just any zombie it is a ZOMBIE BEAR. "
 							+ "You go to attack it ");//Display text on button
-					choice1.setText("ATTACK!!");//Display text on button
+					playerHP = playerHP + 25;//Change of integer HP value
+					hpLabelNumber.setText(""+playerHP);//Display updated HP value
+					choice1.setText("ATTACK!!!");//Display text on button
 					choice2.setText("");//Display text on button
 					choice3.setText("");//Display text on button
 					choice4.setText("");//Display text on button 
@@ -415,7 +425,11 @@ public class Game {
 					mainTextArea.setText("You avenge your friend and the bear releases a mysterious gas into the atmosphere. "
 							+ "As the gas reaches the zombies it suddenly destroys whatever the zombies have left of a brain, and kills all of them leaving the living alone. "
 							+ "You realize that you didn't just avenge your friend, but you also saved the whole world!!");//Display text on button
-					choice1.setText("ATTACK!!");//Display text on button
+					imagePanel.setBounds(400, 300, 480, 272);
+					imagePanel.setBackground(Color.black);
+					image = new ImageIcon(".//res//winScreen.jpg");
+					imageLabel.setIcon(image);
+					choice1.setText("");//Display text on button
 					choice2.setText("");//Display text on button
 					choice3.setText("");//Display text on button
 					choice4.setText("");//Display text on button 
@@ -430,10 +444,10 @@ public class Game {
 					int playerDamage = 0;//Set variable for damage player does
 					
 					if(weapon.equals("Machete")){//Indicating that if the Machete is equipped then continue below
-						playerDamage = new java.util.Random().nextInt(50);//Allows to randomly pick the damage value that player does (0-49)
+						playerDamage = new java.util.Random().nextInt(45);//Allows to randomly pick the damage value that player does (0-49)
 					}
-					else if (weapon.equals("Magic Sword")){//Indicating that if the Magic Sword is equipped then continue below
-						playerDamage = rand.nextInt(40) + 5;//Allows to randomly pick the damage value that player does (0-79)
+					else if (weapon.equals("Sword")){//Indicating that if the Magic Sword is equipped then continue below
+						playerDamage = rand.nextInt(60) + 5;//Allows to randomly pick the damage value that player does (0-79)
 					}
 					
 					mainTextArea.setText("You attacked the zombie and dealt " + playerDamage + " damage");//Placement for text
@@ -452,7 +466,7 @@ public class Game {
 					
 					int zombieDamage = 0;//Set variable for damage zombie does
 					
-					zombieDamage = new java.util.Random().nextInt(30);//Allows to randomly pick the damage value that zombie does (0-29)
+					zombieDamage = new java.util.Random().nextInt(25);//Allows to randomly pick the damage value that zombie does (0-29)
 					
 					mainTextArea.setText("The zombie attacked and dealt " + zombieDamage + " damage");//Placement for text
 				
@@ -1034,7 +1048,9 @@ public class Game {
 				position = "healthPick";//Indication of which method is currently running
 				mainTextArea.setText("You grab your weapon and go into fight the zombie that killed your friend. "
 						+ "You see the zombie in the living room but you notice that it is not just any zombie it is a ZOMBIE BEAR. You go to attack it ");//Placement for text
-				choice1.setText("FOR MARTY B!!!!");//Display text on button
+				choice1.setText("FOR MARTY B!!!");//Display text on button
+				playerHP = playerHP + 25;//Change of integer HP value
+				hpLabelNumber.setText(""+playerHP);//Display updated HP value
 				choice2.setText("");//Display text on button
 				choice3.setText("");//Display text on button
 				choice4.setText("");//Display text on button
@@ -1049,7 +1065,9 @@ public class Game {
 				position = "weaponPick";//Indication of which method is currently running
 				mainTextArea.setText("You grab your weapon and go into fight the zombie that killed your friend. "
 						+ "You see the zombie in the living room but you notice that it is not just any zombie it is a ZOMBIE BEAR. You go to attack it ");//Placement for text
-				choice1.setText("FOR MARTY B!!!!");//Display text on button
+				choice1.setText("FOR MARTY B!!!");//Display text on button
+				weapon = "Sword";//Set player's new weapon
+				weaponLabelName.setText(weapon);//Display weapon text on label
 				choice2.setText("");//Display text on button
 				choice3.setText("");//Display text on button
 				choice4.setText("");//Display text on button
@@ -1393,7 +1411,7 @@ public class Game {
 				choice3.setVisible(true);//Sets the buttons to invisible
 				choice4.setVisible(false);//Sets the buttons to invisible
 				position = "fightThroughZombie";//Indication of which method is currently running
-				mainTextArea.setText("If you choose D, You get out of your truck and look around for a weapon to help you fight off the zombies. "
+				mainTextArea.setText("You get out of your truck and look around for a weapon to help you fight off the zombies. "
 						+ "On the ground you see three items: ");//Placement for text
 				choice1.setText("A small knife that is covered in blood and stuck to a nearby tree");//Display text on button
 				choice2.setText("A handgun that is in a bush but you don’t know if it is loaded ");//Display text on button
@@ -1485,18 +1503,33 @@ public class Game {
 			}
 			public void dead()
 {
-	playerPanel.validate();//Refreshes the panel
-	playerPanel.repaint();//Tells program that panel needs refreshing
+	choiceButtonPanel.validate();//Refreshes the panel
+	choiceButtonPanel.repaint();//Tells program that panel needs refreshing
+	playerPanel.setVisible(false);
+	hpPanel.setVisible(false);
+	weaponPanel.setVisible(false);
 	choice2.setVisible(true);//Sets the buttons to invisible
 	choice3.setVisible(false);//Sets the buttons to invisible
 	choice4.setVisible(false);//Sets the buttons to invisible
 	position = "dead";//Indication of which method is currently running
-	mainTextArea.setText("Would you like to play again?");//Placement for text
+	mainTextArea.setForeground(Color.black);//Colour of text in area
+	image = new ImageIcon(".//res//zombieApocalypse.jpg");
+	imageLabel.setIcon(image);
+	mainTextArea.setText("You have lost the game and died miserably. Would you like to play again?");//Placement for text
 	choice1.setText("Yes");//Display text on button
 	choice2.setText("No");//Display text on button
 	choice3.setText("");//Display text on button
-	choice3.setFont(choiceFont);
-	choice4.setText("");//Display text on button 
+	choice4.setText("");//Display text on button
+	window.repaint();
+	window.revalidate();
+	try{
+        Clip death = AudioSystem.getClip();
+        
+        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File("decap.wav"));
+        death.open(inputStream);
+        death.start();
+	}
+	catch(Exception exc){}
 }
 			
 	public class TitleScreenHandler implements ActionListener{//Interface for receiving an action event (Button press)
@@ -1724,8 +1757,8 @@ public class Game {
 						break;
 					case "takeMissionCont"://Indicates which method is being processed
 						switch(yourChoice){//Determines which choice button was clicked
-						case "c1": healthPick();break;//Result of choice 1 button click
-						case "c2": weaponPick();break;//Result of choice 2 button click
+						case "c1": weaponPick();break;//Result of choice 1 button click
+						case "c2": healthPick();break;//Result of choice 2 button click
 						case "c3": break;//Result of choice 3 button click
 						case "c4": break;//Result of choice 4 button click
 						}
