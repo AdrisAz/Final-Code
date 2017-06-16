@@ -4,8 +4,12 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Random;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -45,6 +49,16 @@ public class Game {
 		window.setLayout(null);//Disable default layout for game
 		window.setVisible(true);//To see the window
 		con = window.getContentPane();//Base layer
+		
+		try{
+            Clip zombie = AudioSystem.getClip();
+            
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File("dark.wav"));
+            zombie.open(inputStream);
+            zombie.loop(Clip.LOOP_CONTINUOUSLY);
+            zombie.start();
+		}
+		catch(Exception exc){}
 		
 		titleNamePanel = new JPanel();//Panel initialization 
 		titleNamePanel.setBounds(330, 100, 650, 150);//Size and location of panel
@@ -302,7 +316,6 @@ public class Game {
 				choice1.setText("Keep walking and pass the town you friend lives in");//Display text on button
 				choice2.setText("Walk into the town and look for your friend");//Display text on button
 				choice3.setText("");//Display text on button
-				
 				choice4.setText("");//Display text on button 
 			}
 			public void walkcont()
@@ -320,7 +333,7 @@ public class Game {
 					choice1.setText("Kill your friend because he has turned into a zombie.");//Display text on button
 					choice2.setText("Run away from him ");//Display text on button
 					choice3.setText("");//Display text on button
-					
+					choice3.setFont(choiceFont);
 					choice4.setText("");//Display text on button 
 					
 				}
@@ -339,7 +352,7 @@ public class Game {
 					choice1.setText("Go and fight the zombies");//Display text on button
 					choice2.setText("Just keep looking for the zombie that killed Marty B");//Display text on button
 					choice3.setText("");//Display text on button
-					
+					choice3.setFont(choiceFont);
 					choice4.setText("");//Display text on button 
 				}
 			public void lookForZombie()
@@ -531,7 +544,7 @@ public class Game {
 						choice1.setText("Go and fight the zombies");//Display text on button
 						choice2.setText("Just keep looking for the zombie that killed Marty B.");//Display text on button
 						choice3.setText("");//Display text on button
-						
+						choice3.setFont(choiceFont);
 						choice4.setText("");//Display text on button 
 					}
 			public void fight()
@@ -566,7 +579,7 @@ public class Game {
 							choice1.setText("Pick the weapon");//Display text on button
 							choice2.setText("Pick the health ");//Display text on button
 							choice3.setText("");//Display text on button
-							
+							choice3.setFont(choiceFont);
 							choice4.setText("");//Display text on button 
 						}
 			public void weapon()
@@ -615,7 +628,7 @@ public class Game {
 						choice1.setText("");//Display text on button
 						choice2.setText("");//Display text on button
 						choice3.setText("");//Display text on button
-						
+						choice3.setFont(choiceFont);
 						choice4.setText("");//Display text on button 
 					}
 			public void findfriend()
@@ -634,7 +647,7 @@ public class Game {
 					choice1.setText("Pick up the chair beside you and hit him with it.");//Display text on button
 					choice2.setText("Freeze up. Stand still and hope he does not see you.");//Display text on button
 					choice3.setText("");//Display text on button
-					
+					choice3.setFont(choiceFont);
 					choice4.setText("");//Display text on button 
 				}
 			public void pickUpChair()
@@ -682,7 +695,7 @@ public class Game {
 						choice1.setText("Make it your mission to kill the zombie that killed your best friend ");//Display text on button
 						choice2.setText("Decide that marty is not worth it and just try to stay alive");//Display text on button
 						choice3.setText("");//Display text on button
-						
+						choice3.setFont(choiceFont);
 						choice4.setText("");//Display text on button 
 					}
 			public void mission()
@@ -701,7 +714,7 @@ public class Game {
 							choice1.setText("Go and fight the zombies");//Display text on button
 							choice2.setText("Just keep looking for the zombie that killed Marty B.");//Display text on button
 							choice3.setText("");//Display text on button
-							
+							choice3.setFont(choiceFont);
 							choice4.setText("");//Display text on button 
 						}
 			public void stayalive()
@@ -1103,7 +1116,7 @@ public class Game {
 				choice1.setText("");//Display text on button
 				choice2.setText("");//Display text on button
 				choice3.setText("");//Display text on button
-				
+				choice3.setFont(choiceFont);
 				choice4.setText("");//Display text on button
 			}
 			public void turnaroundcont()
@@ -1120,7 +1133,7 @@ public class Game {
 				choice1.setText("");//Display text on button
 				choice2.setText("");//Display text on button
 				choice3.setText("");//Display text on button
-				
+				choice3.setFont(choiceFont);
 				choice4.setText("");//Display text on button
 			}
 			public void getout()
@@ -1138,7 +1151,7 @@ public class Game {
 		choice1.setText("Run as fast as you can and try and get away");//Display text on button
 		choice2.setText("Climb the nearby tree and hope the zombies don’t see you");//Display text on button
 		choice3.setText("Try and fight your way through the zombies with nothing but your bare hands and a bear trap");//Display text on button
-		
+		choice3.setFont(choiceFont);
 		choice4.setText("");//Display text on button
 	}
 			public void run()
@@ -1156,7 +1169,7 @@ public class Game {
 			choice1.setText("Run as fast as you can and try and get away");//Display text on button
 			choice2.setText("Climb the nearby tree and hope the zombies don’t see you");//Display text on button
 			choice3.setText("Try and fight your way through the zombies with nothing but your bare hands and a bear trap");//Display text on button
-			
+			choice3.setFont(choiceFont);
 			choice4.setText("");//Display text on button
 		}
 			public void climb()
@@ -1174,7 +1187,7 @@ public class Game {
 			choice1.setText("Run as fast as you can and try and get away");//Display text on button
 			choice2.setText("Climb the nearby tree and hope the zombies don’t see you");//Display text on button
 			choice3.setText("Try and fight your way through the zombies with nothing but your bare hands and a bear trap");//Display text on button
-			
+			choice3.setFont(choiceFont);
 			choice4.setText("");//Display text on button
 		}
 			public void runaway()
@@ -1190,7 +1203,7 @@ public class Game {
 				choice1.setText("Run inside the cottage");//Display text on button
 				choice2.setText("Run past the cottage");//Display text on button
 				choice3.setText("Try to see inside the cottage through the windows");//Display text on button
-				
+				choice3.setFont(choiceFont);
 				choice4.setText("");//Display text on button
 			}
 			public void incottage()
@@ -1210,7 +1223,7 @@ public class Game {
 					choice1.setText("Grab the pair of scissors that are beside your bed and throw them at the person");//Display text on button
 					choice2.setText("Just lay in the bed and hope the person is friendly.");//Display text on button
 					choice3.setText("");//Display text on button
-					
+					choice3.setFont(choiceFont);
 					choice4.setText("");//Display text on button
 				}
 			public void scissors()
@@ -1241,7 +1254,7 @@ public class Game {
 						choice1.setText("");//Display text on button
 						choice2.setText("");//Display text on button
 						choice3.setText("");//Display text on button
-						
+						choice3.setFont(choiceFont);
 						choice4.setText("");//Display text on button
 					}
 			public void pastcottage()
@@ -1279,7 +1292,7 @@ public class Game {
 				choice1.setText("");//Display text on button
 				choice2.setText("");//Display text on button
 				choice3.setText("");//Display text on button
-				
+				choice3.setFont(choiceFont);
 				choice4.setText("");//Display text on button
 			}
 			public void beartrap()
@@ -1308,7 +1321,7 @@ public class Game {
 					choice1.setText("A small knife that is covered in blood and stuck to a nearby tree");//Display text on button
 					choice2.setText("A handgun that is in a bush but you don’t know if it is loaded");//Display text on button
 					choice3.setText("A old broom stick that is sharpened at one end.");//Display text on button
-					
+					choice3.setFont(choiceFont);
 					choice4.setText("");//Display text on button
 		}
 			public void knife()
@@ -1336,7 +1349,7 @@ public class Game {
 				choice1.setText("Put the gun in your mouth and end it before the zombies can");//Display text on button
 				choice2.setText("Try and run through the herd and only shoot if you need to ");//Display text on button
 				choice3.setText("");//Display text on button
-				
+				choice3.setFont(choiceFont);
 				choice4.setText("");//Display text on button
 			}
 			public void die()
@@ -1385,7 +1398,7 @@ public class Game {
 				choice1.setText("A small knife that is covered in blood and stuck to a nearby tree");//Display text on button
 				choice2.setText("A handgun that is in a bush but you don’t know if it is loaded ");//Display text on button
 				choice3.setText("A old broom stick that is sharpened at one end.");//Display text on button
-				
+				choice3.setFont(choiceFont);
 				choice4.setText("");//Display text on button
 			}
 			public void smallKnife()
@@ -1402,7 +1415,7 @@ public class Game {
 				choice1.setText("Continue");//Display text on button
 				choice2.setText("");//Display text on button
 				choice3.setText("");//Display text on button
-				
+				choice3.setFont(choiceFont);
 				choice4.setText("");//Display text on button
 			}
 			public void handgun()
@@ -1418,7 +1431,7 @@ public class Game {
 				choice1.setText("Put the gun in your mouth and end it before the zombies can");//Display text on button
 				choice2.setText("Try and run through the herd and only shoot if you need to");//Display text on button
 				choice3.setText("");//Display text on button
-				
+				choice3.setFont(choiceFont);
 				choice4.setText("");//Display text on button
 			}
 			public void suicide()
@@ -1433,7 +1446,7 @@ public class Game {
 				choice1.setText("Continue");//Display text on button
 				choice2.setText("");//Display text on button
 				choice3.setText("");//Display text on button
-				
+				choice3.setFont(choiceFont);
 				choice4.setText("");//Display text on button
 			}
 			public void runthroughhurd()
@@ -1449,7 +1462,7 @@ public class Game {
 				choice1.setText("Continue");//Display text on button
 				choice2.setText("");//Display text on button
 				choice3.setText("");//Display text on button
-				
+				choice3.setFont(choiceFont);
 				choice4.setText("");//Display text on button
 			}
 			public void broomStick()
@@ -1467,7 +1480,7 @@ public class Game {
 				choice1.setText("Continue");//Display text on button
 				choice2.setText("");//Display text on button
 				choice3.setText("");//Display text on button
-				
+				choice3.setFont(choiceFont);
 				choice4.setText("");//Display text on button
 			}
 			public void dead()
@@ -1482,7 +1495,7 @@ public class Game {
 	choice1.setText("Yes");//Display text on button
 	choice2.setText("No");//Display text on button
 	choice3.setText("");//Display text on button
-	
+	choice3.setFont(choiceFont);
 	choice4.setText("");//Display text on button 
 }
 			
